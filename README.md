@@ -15,7 +15,8 @@ https://github.com/hung-fq/dc12-ios-training-samples.git
 	iOS: VuongLy
 	android: HungPham
 
-3. Sub-Leader will merge to develop after review/rework if OK
+3. Sub-Leader will merge to develop after review/rework
+   Also delete branch after merged
 
 4. Release:
 	Default to release 1time/week (Fri 11:30 PM)
