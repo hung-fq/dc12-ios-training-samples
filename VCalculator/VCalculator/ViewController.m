@@ -17,7 +17,7 @@
 @end
 
 @implementation ViewController
-@synthesize txtKetqua;
+@synthesize txtKetqua,numberView;
 int sothunhat;
 int sothuhai;
 double ketqua;
@@ -33,6 +33,8 @@ bool isDaTinhToan;
     ketqua = 0.0;
     dau = @"";
     isDaTinhToan = false;
+    [self.view setBackgroundColor:[UIColor yellowColor]];
+    [numberView setBackgroundColor:[UIColor yellowColor]];
 }
 
 - (IBAction)key0:(id)sender {
@@ -203,6 +205,16 @@ bool isDaTinhToan;
     sothuhai = 0;
     ketqua = 0.0;
     isDaTinhToan = true;
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    if(size.width>size.height){
+        [self.view setBackgroundColor:[UIColor greenColor]];
+        [numberView setBackgroundColor:[UIColor greenColor]];
+    }else{
+        [self.view setBackgroundColor:[UIColor yellowColor]];
+        [numberView setBackgroundColor:[UIColor yellowColor]];
+    }
 }
 
 @end

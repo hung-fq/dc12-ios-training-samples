@@ -11,6 +11,7 @@
     
 }
 @property (weak, nonatomic) IBOutlet UITextField *txtKetqua;
+@property (weak, nonatomic) IBOutlet UIView *numberView;
 
 - (IBAction)key1:(id)sender;
 - (IBAction)key2:(id)sender;
