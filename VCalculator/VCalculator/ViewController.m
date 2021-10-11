@@ -22,6 +22,7 @@ int sothunhat;
 int sothuhai;
 double ketqua;
 NSString *dau;
+bool isDaTinhToan;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,66 +32,117 @@ NSString *dau;
     sothuhai = 0;
     ketqua = 0.0;
     dau = @"";
+    isDaTinhToan = false;
 }
 
 - (IBAction)key0:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"0"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"0";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"0"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key1:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"1"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"1";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"1"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key2:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"2"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"2";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"2"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key3:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"3"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"3";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"3"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key4:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"4"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"4";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"4"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key5:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"5"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"5";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"5"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key6:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"6"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"6";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"6"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key7:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"7"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"7";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"7"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key8:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"8"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"8";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"8"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)key9:(id)sender {
     NSString *kq = txtKetqua.text;
-    kq = [kq stringByAppendingString:@"9"];
-    txtKetqua.text = kq;
+    if(isDaTinhToan){
+        txtKetqua.text = @"9";
+        isDaTinhToan = false;
+    }else{
+        kq = [kq stringByAppendingString:@"9"];
+        txtKetqua.text = kq;
+    }
 }
 
 - (IBAction)keyCong:(id)sender {
@@ -150,7 +202,7 @@ NSString *dau;
     sothunhat = 0;
     sothuhai = 0;
     ketqua = 0.0;
-    
+    isDaTinhToan = true;
 }
 
 @end
