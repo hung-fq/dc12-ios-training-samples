@@ -9,14 +9,13 @@
 
 @interface ViewController : UIViewController
 
-{
-    double firstNumber;
-    double secondNumber;
-    double total;
-    
-    NSString *fomular;
-    NSString *lastButton;
-}
+@property (nonatomic) double firstNumber;
+@property (nonatomic) double secondNumber;
+@property (nonatomic) double total;
+
+@property (strong, nonatomic) NSString *fomular;
+@property (strong, nonatomic) NSString *lastButton;
+
 @property (strong, nonatomic) IBOutlet UILabel *resultLable;
 @property (strong, nonatomic) IBOutlet UIView *mainScreen;
 @end

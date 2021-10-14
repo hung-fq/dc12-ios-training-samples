@@ -13,14 +13,16 @@
 
 @implementation ViewController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _resultLable.text = @"0";
     _mainScreen.backgroundColor = [UIColor blueColor];
 }
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [self setbackground];
 }
 
@@ -34,161 +36,140 @@
     }
 }
 
-- (NSString *)parseNumberToString:(double) number
-{
+- (NSString *)parseNumberToString:(double) number {
     NSNumber *myDoubleNumber = [NSNumber numberWithDouble:number];
     return [myDoubleNumber stringValue];
 }
 
-//Handle method
+#pragma mark - Method
 
-- (void)handleNumber:(NSInteger ) num
-{
-    if([lastButton isEqual: @"num"]) {
-        if(secondNumber > 0) {
-            secondNumber = secondNumber*10 + num;
-            _resultLable.text = [self parseNumberToString:secondNumber];
-        } else if (firstNumber > 0) {
-            firstNumber = firstNumber*10 + num;
-            _resultLable.text = [self parseNumberToString:firstNumber];
+- (void)handleNumber:(NSInteger ) num {
+    if([self.self.lastButton isEqual: @"num"]) {
+        if(self.secondNumber > 0) {
+            self.secondNumber = self.secondNumber*10 + num;
+            _resultLable.text = [self parseNumberToString:self.secondNumber];
+        } else if (self.firstNumber > 0) {
+            self.firstNumber = self.firstNumber*10 + num;
+            _resultLable.text = [self parseNumberToString:self.firstNumber];
         }
-    } else if ([lastButton isEqual: @"="]) {
+    } else if ([self.lastButton isEqual: @"="]) {
         [self resetAll];
-        firstNumber = num;
+        self.firstNumber = num;
         _resultLable.text = [self parseNumberToString:num];
-    } else if ([lastButton isEqual: @"fomular"]) {
-        secondNumber = num;
+    } else if ([self.lastButton isEqual: @"self.fomular"]) {
+        self.secondNumber = num;
         _resultLable.text = [self parseNumberToString:num];
     } else {
         _resultLable.text = [self parseNumberToString:num];
-        firstNumber = num;
+        self.firstNumber = num;
     }
-    lastButton = @"num";
+    self.lastButton = @"num";
 }
 
-- (double)handleTotal
-{
-    if([fomular  isEqual: @"+"]) {
-        total = firstNumber + secondNumber;
-    } else if ([fomular  isEqual: @"-"]) {
-        total = firstNumber - secondNumber;
-    } else if ([fomular  isEqual: @"*"]) {
-        total = firstNumber * secondNumber;
-    } else if ([fomular  isEqual: @"/"]) {
-        total = firstNumber / secondNumber;
+- (double) handleTotal {
+    if([self.fomular  isEqual: @"+"]) {
+        self.total = self.firstNumber + self.secondNumber;
+    } else if ([self.fomular isEqual: @"-"]) {
+        self.total = self.firstNumber - self.secondNumber;
+    } else if ([self.fomular isEqual: @"*"]) {
+        self.total = self.firstNumber * self.secondNumber;
+    } else if ([self.fomular isEqual: @"/"]) {
+        self.total = self.firstNumber / self.secondNumber;
     }
-    return total;
+    return self.total;
 }
 
-- (void)handleFomular
-{
-    lastButton = fomular;
-    if(total > 0) {
-        firstNumber = total;
-        secondNumber = 0;
-        total = 0;
-    } else if (secondNumber > 0) {
-        firstNumber = [self handleTotal];
+- (void) handleFomular {
+    self.lastButton = self.fomular;
+    if(self.total > 0) {
+        self.firstNumber = self.total;
+        self.secondNumber = 0;
+        self.total = 0;
+    } else if (self.secondNumber > 0) {
+        self.firstNumber = [self handleTotal];
     }
-    lastButton = @"fomular";
+    self.lastButton = @"self.fomular";
 }
 
-- (void)resetAll
-{
-    firstNumber = 0;
-    secondNumber = 0;
-    total = 0;
-    lastButton = @"";
+- (void)resetAll {
+    self.firstNumber = 0;
+    self.secondNumber = 0;
+    self.total = 0;
+    self.lastButton = @"";
 }
 
-//Code handle button
+#pragma mark - IBActions
 
-- (IBAction)pressButtonCancel:(id)sender
-{
+- (IBAction)pressButtonCancel:(id)sender {
     _resultLable.text = @"0";
     [self resetAll];
 }
 
-- (IBAction)pressButtonEqual:(id)sender
-{
-    if(firstNumber >= 0 && secondNumber > 0) {
-        total = [self handleTotal];
-        _resultLable.text = [self parseNumberToString:total];
-        lastButton = @"=";
+- (IBAction)pressButtonEqual:(id)sender {
+    if(self.firstNumber >= 0 && self.secondNumber > 0) {
+        self.total = [self handleTotal];
+        _resultLable.text = [self parseNumberToString:self.total];
+        self.lastButton = @"=";
     }
 }
 
-- (IBAction)pressNum1:(id)sender
-{
+- (IBAction)pressNum1:(id)sender {
     [self handleNumber:1];
 }
 
-- (IBAction)pressNum2:(id)sender
-{
+- (IBAction)pressNum2:(id)sender {
     [self handleNumber:2];
 }
 
-- (IBAction)pressNum3:(id)sender
-{
+- (IBAction)pressNum3:(id)sender {
     [self handleNumber:3];
 }
 
-- (IBAction)pressNum4:(id)sender
-{
+- (IBAction)pressNum4:(id)sender {
     [self handleNumber:4];
 }
 
-- (IBAction)pressNum5:(id)sender
-{
+- (IBAction)pressNum5:(id)sender {
     [self handleNumber:5];
 }
 
-- (IBAction)pressNum6:(id)sender
-{
+- (IBAction)pressNum6:(id)sender {
     [self handleNumber:6];
 }
 
-- (IBAction)pressNum7:(id)sender
-{
+- (IBAction)pressNum7:(id)sender {
     [self handleNumber:7];
 }
 
-- (IBAction)pressNum8:(id)sender
-{
+- (IBAction)pressNum8:(id)sender {
     [self handleNumber:8];
 }
 
-- (IBAction)pressNum9:(id)sender
-{
+- (IBAction)pressNum9:(id)sender {
     [self handleNumber:9];
 }
 
-- (IBAction)pressNum0:(id)sender
-{
+- (IBAction)pressNum0:(id)sender {
     [self handleNumber:0];
 }
 
-- (IBAction)pressButtonPlus:(id)sender
-{
-    fomular = @"+";
+- (IBAction)pressButtonPlus:(id)sender {
+    self.fomular = @"+";
     [self handleFomular];
 }
 
-- (IBAction)pressButtonMinus:(id)sender
-{
-    fomular = @"-";
+- (IBAction)pressButtonMinus:(id)sender {
+    self.fomular = @"-";
     [self handleFomular];
 }
 
-- (IBAction)pressButtonMultiply:(id)sender
-{
-    fomular = @"*";
+- (IBAction)pressButtonMultiply:(id)sender {
+    self.fomular = @"*";
     [self handleFomular];
 }
 
-- (IBAction)pressButtonDevide:(id)sender
-{
-    fomular = @"/";
+- (IBAction)pressButtonDevide:(id)sender {
+    self.fomular = @"/";
     [self handleFomular];
 }
 
