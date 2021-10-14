@@ -9,29 +9,55 @@
 
 @interface ViewController ()
 
+#pragma mark - Define Private property
+
+@property (nonatomic) double firstNumber;
+@property (nonatomic) double secondNumber;
+@property (nonatomic) double total;
+
+@property (nonatomic, assign) BOOL hasError;
+@property (strong, nonatomic) NSString *fomularString;
+@property (strong, nonatomic) NSString *lastButtonString;
+
 @end
 
 @implementation ViewController
+
+#pragma mark - Define const
+
+static double const multipleValue = 10;
+
+static NSString * const numberButtonType = @"num";
+static NSString * const equalButtonType = @"=";
+static NSString * const fomularButtonType = @"fomular";
+
+static NSString * const sumFomular = @"+";
+static NSString * const minusFomular = @"-";
+static NSString * const multiplyFomular = @"*";
+static NSString * const divideFomular = @"/";
+
+static NSString * const zeroStringValue = @"0";
+static NSString * const emptyStringValue = @"";
+static NSString * const errorMessage = @"Can't devide for 0";
 
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _resultLable.text = @"0";
+    _resultLabel.text = zeroStringValue;
     _mainScreen.backgroundColor = [UIColor blueColor];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [self setbackground];
+    [self setBackground];
 }
 
-- (void)setbackground {
-    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft ||
-        [[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
+- (void)setBackground {
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft
+        ||[[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
         _mainScreen.backgroundColor = [UIColor redColor];
-    }
-    else {
+    } else {
         _mainScreen.backgroundColor = [UIColor blueColor];
     }
 }
@@ -43,73 +69,94 @@
 
 #pragma mark - Method
 
-- (void)handleNumber:(NSInteger ) num {
-    if([self.self.lastButton isEqual: @"num"]) {
+- (void)handleNumber:(NSInteger)number {
+    if(self.hasError) {
+        _resultLabel.text = [self parseNumberToString:number];
+    } else if([self.lastButtonString isEqual: numberButtonType]) {
         if(self.secondNumber > 0) {
-            self.secondNumber = self.secondNumber*10 + num;
-            _resultLable.text = [self parseNumberToString:self.secondNumber];
-        } else if (self.firstNumber > 0) {
-            self.firstNumber = self.firstNumber*10 + num;
-            _resultLable.text = [self parseNumberToString:self.firstNumber];
+            self.secondNumber = self.secondNumber*multipleValue + number;
+            _resultLabel.text = [self parseNumberToString:self.secondNumber];
+        } else if (self.firstNumber >= 0) {
+            self.firstNumber = self.firstNumber*multipleValue + number;
+            _resultLabel.text = [self parseNumberToString:self.firstNumber];
         }
-    } else if ([self.lastButton isEqual: @"="]) {
+    } else if ([self.lastButtonString isEqual: equalButtonType]) {
         [self resetAll];
-        self.firstNumber = num;
-        _resultLable.text = [self parseNumberToString:num];
-    } else if ([self.lastButton isEqual: @"self.fomular"]) {
-        self.secondNumber = num;
-        _resultLable.text = [self parseNumberToString:num];
+        self.firstNumber = number;
+        _resultLabel.text = [self parseNumberToString:number];
+    } else if ([self.lastButtonString isEqual: fomularButtonType]) {
+        self.secondNumber = number;
+        _resultLabel.text = [self parseNumberToString:number];
     } else {
-        _resultLable.text = [self parseNumberToString:num];
-        self.firstNumber = num;
+        _resultLabel.text = [self parseNumberToString:number];
+        self.firstNumber = number;
     }
-    self.lastButton = @"num";
+    self.lastButtonString = numberButtonType;
 }
 
-- (double) handleTotal {
-    if([self.fomular  isEqual: @"+"]) {
+- (double)handleTotal {
+    if([self.fomularString isEqual: sumFomular]) {
         self.total = self.firstNumber + self.secondNumber;
-    } else if ([self.fomular isEqual: @"-"]) {
+    } else if ([self.fomularString isEqual: minusFomular]) {
         self.total = self.firstNumber - self.secondNumber;
-    } else if ([self.fomular isEqual: @"*"]) {
+    } else if ([self.fomularString isEqual: multiplyFomular]) {
         self.total = self.firstNumber * self.secondNumber;
-    } else if ([self.fomular isEqual: @"/"]) {
+    } else if ([self.fomularString isEqual: divideFomular]) {
         self.total = self.firstNumber / self.secondNumber;
     }
     return self.total;
 }
 
-- (void) handleFomular {
-    self.lastButton = self.fomular;
-    if(self.total > 0) {
-        self.firstNumber = self.total;
-        self.secondNumber = 0;
-        self.total = 0;
-    } else if (self.secondNumber > 0) {
-        self.firstNumber = [self handleTotal];
+- (void)handleFomular:(NSString *)fomular {
+    if(self.hasError) {
+        _resultLabel.text = errorMessage;
+    } else {
+        if(self.lastButtonString == equalButtonType) {
+            self.firstNumber = self.total;
+            self.secondNumber = 0;
+            self.total = 0;
+        } else if (self.secondNumber > 0) {
+            self.firstNumber = [self handleTotal];
+            self.resultLabel.text = [self parseNumberToString:self.firstNumber];
+        } else if([self.fomularString isEqual: divideFomular]
+                 && self.secondNumber == 0) {
+           _resultLabel.text = errorMessage;
+            self.hasError = YES;
+       }
+        self.fomularString = fomular;
+        self.lastButtonString = fomularButtonType;
     }
-    self.lastButton = @"self.fomular";
 }
 
 - (void)resetAll {
     self.firstNumber = 0;
     self.secondNumber = 0;
     self.total = 0;
-    self.lastButton = @"";
+    self.lastButtonString = emptyStringValue;
+    self.fomularString = emptyStringValue;
+    self.hasError = NO;
 }
 
 #pragma mark - IBActions
 
 - (IBAction)pressButtonCancel:(id)sender {
-    _resultLable.text = @"0";
+    _resultLabel.text = zeroStringValue;
     [self resetAll];
 }
 
 - (IBAction)pressButtonEqual:(id)sender {
-    if(self.firstNumber >= 0 && self.secondNumber > 0) {
-        self.total = [self handleTotal];
-        _resultLable.text = [self parseNumberToString:self.total];
-        self.lastButton = @"=";
+    if(self.hasError) {
+        _resultLabel.text = errorMessage;
+    } else {
+        if(self.secondNumber > 0) {
+            self.total = [self handleTotal];
+            _resultLabel.text = [self parseNumberToString:self.total];
+            self.lastButtonString = equalButtonType;
+        } else if([self.fomularString isEqual: divideFomular]
+                  && self.secondNumber == 0) {
+            _resultLabel.text = errorMessage;
+            self.hasError = YES;
+        }
     }
 }
 
@@ -154,23 +201,20 @@
 }
 
 - (IBAction)pressButtonPlus:(id)sender {
-    self.fomular = @"+";
-    [self handleFomular];
+    [self handleFomular:sumFomular];
 }
 
 - (IBAction)pressButtonMinus:(id)sender {
-    self.fomular = @"-";
-    [self handleFomular];
+    [self handleFomular:minusFomular];
 }
 
 - (IBAction)pressButtonMultiply:(id)sender {
-    self.fomular = @"*";
-    [self handleFomular];
+    [self handleFomular:multiplyFomular];
 }
 
 - (IBAction)pressButtonDevide:(id)sender {
-    self.fomular = @"/";
-    [self handleFomular];
+    [self handleFomular:divideFomular];
 }
 
 @end
+
