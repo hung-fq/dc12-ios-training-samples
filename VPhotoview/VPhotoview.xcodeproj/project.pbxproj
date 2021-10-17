@@ -19,6 +19,11 @@
 		595A95A6271526B000EC6DB1 /* image4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 595A95A1271526B000EC6DB1 /* image4.jpg */; };
 		595A95A7271526B000EC6DB1 /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 595A95A2271526B000EC6DB1 /* image3.jpg */; };
 		595A95A8271526B000EC6DB1 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 595A95A3271526B000EC6DB1 /* image1.jpg */; };
+		59E6D6BC271BC36E00753BE0 /* image10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 59E6D6B7271BC36E00753BE0 /* image10.jpg */; };
+		59E6D6BD271BC36F00753BE0 /* image6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 59E6D6B8271BC36E00753BE0 /* image6.jpg */; };
+		59E6D6BE271BC36F00753BE0 /* image8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 59E6D6B9271BC36E00753BE0 /* image8.jpg */; };
+		59E6D6BF271BC36F00753BE0 /* image7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 59E6D6BA271BC36E00753BE0 /* image7.jpg */; };
+		59E6D6C0271BC36F00753BE0 /* image9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 59E6D6BB271BC36E00753BE0 /* image9.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,11 @@
 		595A95A1271526B000EC6DB1 /* image4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image4.jpg; sourceTree = "<group>"; };
 		595A95A2271526B000EC6DB1 /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpg; sourceTree = "<group>"; };
 		595A95A3271526B000EC6DB1 /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
+		59E6D6B7271BC36E00753BE0 /* image10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image10.jpg; sourceTree = "<group>"; };
+		59E6D6B8271BC36E00753BE0 /* image6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image6.jpg; sourceTree = "<group>"; };
+		59E6D6B9271BC36E00753BE0 /* image8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image8.jpg; sourceTree = "<group>"; };
+		59E6D6BA271BC36E00753BE0 /* image7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image7.jpg; sourceTree = "<group>"; };
+		59E6D6BB271BC36E00753BE0 /* image9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image9.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +100,11 @@
 		595A959E271521EF00EC6DB1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				59E6D6B8271BC36E00753BE0 /* image6.jpg */,
+				59E6D6BA271BC36E00753BE0 /* image7.jpg */,
+				59E6D6B9271BC36E00753BE0 /* image8.jpg */,
+				59E6D6BB271BC36E00753BE0 /* image9.jpg */,
+				59E6D6B7271BC36E00753BE0 /* image10.jpg */,
 				595A95A3271526B000EC6DB1 /* image1.jpg */,
 				595A959F271526B000EC6DB1 /* image2.jpg */,
 				595A95A2271526B000EC6DB1 /* image3.jpg */,
@@ -158,12 +173,17 @@
 			files = (
 				595A95952715142E00EC6DB1 /* LaunchScreen.storyboard in Resources */,
 				595A95A5271526B000EC6DB1 /* image5.jpg in Resources */,
+				59E6D6BC271BC36E00753BE0 /* image10.jpg in Resources */,
+				59E6D6C0271BC36F00753BE0 /* image9.jpg in Resources */,
+				59E6D6BE271BC36F00753BE0 /* image8.jpg in Resources */,
 				595A95A6271526B000EC6DB1 /* image4.jpg in Resources */,
 				595A95922715142E00EC6DB1 /* Assets.xcassets in Resources */,
 				595A95A4271526B000EC6DB1 /* image2.jpg in Resources */,
+				59E6D6BD271BC36F00753BE0 /* image6.jpg in Resources */,
 				595A95A8271526B000EC6DB1 /* image1.jpg in Resources */,
 				595A95A7271526B000EC6DB1 /* image3.jpg in Resources */,
 				595A95902715142900EC6DB1 /* Main.storyboard in Resources */,
+				59E6D6BF271BC36F00753BE0 /* image7.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +347,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -354,7 +374,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -7,36 +7,36 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
-
+@interface ViewController () {
+    NSInteger numImages;
+    CGFloat scrollHeight;
+    CGFloat scrollWidth;
+    UIImageView *imageView;
+    NSArray *nameImage;
+}
+@property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
 @end
 
 @implementation ViewController
 @synthesize photoScrollView;
-int numImages = 0;
-CGFloat scrollHeight = 0;
-CGFloat scrollWidth  = 0;
-UIImageView *imageView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     photoScrollView.scrollEnabled = YES;
     photoScrollView.pagingEnabled = YES;
-    
+    numImages = [nameImage count];
+    nameImage = @[@"image1.jpg", @"image2.jpg", @"image3.jpg", @"image4.jpg", @"image5.jpg", @"image6.jpg", @"image7.jpg", @"image8.jpg", @"image9.jpg", @"image10.jpg"];
+    scrollHeight = self.view.frame.size.height;
+    scrollWidth = self.view.frame.size.width;
     [self loadImageViewToScrollView];
     [self setPositionImageViewOnScrollView];
 }
 
 - (void)loadImageViewToScrollView {
-    scrollHeight = self.view.frame.size.height;
-    scrollWidth = self.view.frame.size.width;
-    
-    for(int i = 1; i <= 5; i++){
-        NSString *imageName = [NSString stringWithFormat:@"image%i.jpg", i];
+    for(int i = 0; i <= nameImage.count - 1; i++){
+        NSString *imageName = [nameImage objectAtIndex:i];
         UIImage *image = [UIImage imageNamed:imageName];
-        if(image==nil)
-            break;
         
         // Create imageView and add image
         imageView = [[UIImageView alloc] initWithImage:image];
@@ -56,7 +56,6 @@ UIImageView *imageView;
         zoomScroll.tag = i;
         zoomScroll.delegate = self;
         [zoomScroll addSubview:imageView];
-        [zoomScroll setContentOffset:CGPointMake(0, -50)];
         [photoScrollView addSubview:zoomScroll];
         numImages++;
     }
@@ -95,5 +94,8 @@ UIImageView *imageView;
     photoScrollView.contentOffset = CGPointMake([photoScrollView contentOffset].x - scrollWidth, [photoScrollView contentOffset].y);
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator {
+
+}
 
 @end

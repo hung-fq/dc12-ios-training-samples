@@ -27,6 +27,7 @@
                                             <action selector="keyPrevious:" destination="BYZ-38-t0r" id="EhF-Jx-Y5l"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ehb-gU-w80"/>
                                     <barButtonItem title="Next" id="PeP-PE-XkU">
                                         <connections>
                                             <action selector="keyNext:" destination="BYZ-38-t0r" id="JwU-7D-Avz"/>
