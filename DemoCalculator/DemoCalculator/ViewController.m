@@ -4,128 +4,152 @@
 //
 //  Created by Bao on 11/10/2021.
 //
-
+#import <UIKit/UIKit.h>
 #import "ViewController.h"
 
 @interface ViewController ()
+
+typedef NS_ENUM(NSInteger, Calculators) {
+    ModeZero,
+    Summation,
+    Subtraction,
+    Multiplication,
+    Division
+};
+
+@property (nonatomic) Calculators calculator;
+@property (nonatomic) double total;
+@property (nonatomic) NSString  *valueString;
+@property (nonatomic) BOOL lastButtonWasMode;
+
+@property (strong, nonatomic) IBOutlet UILabel *labelText;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
 @end
 
 @implementation ViewController
 
+#pragma mark - Define const
+
+static NSString * const zeroStringValue = @"0";
+static NSString * const emptyStringValue = @"";
+
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    valueString = @"";
+    _valueString = emptyStringValue;
     _backgroundView.backgroundColor = [UIColor lightGrayColor];
-    
 }
 
 
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+#pragma mark - Method
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
 {
-    [self setbackground];
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [self setbackground];
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+    }];
 }
--(void)setbackground {
-    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation ]== UIDeviceOrientationLandscapeRight)
-    {
-        NSLog(@"Lanscapse");
+
+- (void)setbackground {
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft ||
+        [[UIDevice currentDevice] orientation ]== UIDeviceOrientationLandscapeRight) {
         _backgroundView.backgroundColor = [UIColor darkGrayColor];
     }
-    if([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait || [[UIDevice currentDevice] orientation] == UIDeviceOrientationPortraitUpsideDown )
-    {
-        NSLog(@"UIDeviceOrientationPortrait");
+    if([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait ||
+       [[UIDevice currentDevice] orientation] == UIDeviceOrientationPortraitUpsideDown ) {
         _backgroundView.backgroundColor = [UIColor lightGrayColor];
     }
 }
 
-
--(void)setMode:(int)m
+- (void)setMode:(NSInteger)m
 {
-    if (total == 0) {
+    if (_total == ModeZero) {
         return;
     }
-    mode = m;
-    lastButtonWasMode = YES;
-    total = [valueString intValue];
+    _calculator = m;
+    _lastButtonWasMode = YES;
+    _total = [_valueString doubleValue];
 }
 
+#pragma mark - IBActions
 
--(IBAction)Number:(UIControl *)sender
+- (IBAction)Number:(UIControl *)sender
 {
-    NSLog(@"%ld",(long)sender.tag);
     _labelText.text = [NSString stringWithFormat:@"%ld",(long) sender.tag];
-    
     NSInteger num = sender.tag;
-    if (num == 0 && total == 0) {
+    if (num == ModeZero && _total == ModeZero) {
         return;
     }
-    if (lastButtonWasMode) {
-        lastButtonWasMode = NO;
-        valueString = @"";
+    if (_lastButtonWasMode) {
+        _lastButtonWasMode = NO;
+        _valueString = emptyStringValue;
     }
-    
     NSString *numAsString = [NSString stringWithFormat:@"%li", (long)num];
-    valueString = [valueString stringByAppendingString:numAsString];
+    _valueString = [_valueString stringByAppendingString:numAsString];
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *n = [formatter numberFromString:valueString];
+    NSNumber *n = [formatter numberFromString:_valueString];
     _labelText.text = [formatter stringFromNumber:n];
-    
-    if (total == 0) {
-        total = [valueString intValue];
+    if (_total == ModeZero) {
+        _total = [_valueString doubleValue];
     }
-    
 }
 
--(IBAction)btnReset:(UIControl *)sender
+- (IBAction)resetButton:(UIControl *)sender
 {
-    
-    total = 0;
-    valueString = @"";
-    _labelText.text = @"0";
+    _total = ModeZero;
+    _valueString = emptyStringValue;
+    _labelText.text = zeroStringValue;
 }
 
--(IBAction)btnValue:(UIControl *)sender
-
+- (IBAction)valueButton:(UIControl *)sender
 {
-    if (mode == 0) {
+    if (_calculator == ModeZero) {
         return;
     }
-    if (mode == 1) {
-        total += [valueString intValue];
+    if (_calculator == Summation) {
+        _total += [_valueString doubleValue];
     }
-    if (mode == 2) {
-        total -= [valueString intValue];
+    if (_calculator == Subtraction) {
+        _total -= [_valueString doubleValue];
     }
-    if (mode == 3) {
-        total *= [valueString intValue];
+    if (_calculator == Multiplication) {
+        _total *= [_valueString doubleValue];
     }
-    if (mode == 4) {
-        total /= [valueString intValue];
+    if (_calculator == Division) {
+        _total /= [_valueString doubleValue];
     }
     
-    valueString = [NSString stringWithFormat:@"%li",(long)total];
+    _valueString = [NSString stringWithFormat:@"%li",(long)_total];
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *n = [formatter numberFromString:valueString];
+    NSNumber *n = [formatter numberFromString:_valueString];
     _labelText.text = [formatter stringFromNumber:n];
-    mode = 0;
+    _calculator = ModeZero;
 }
--(IBAction)btnSum:(UIControl *)sender
-{ [self setMode:1];
-    
-}
--(IBAction)btnSubtraction:(UIControl *)sender
+
+- (IBAction)sumButton:(UIControl *)sender
 {
-    [self setMode:2];
+    [self setMode:Summation];
 }
--(IBAction)btnMultiplication:(UIControl *)sender
+
+- (IBAction)subtractionButton:(UIControl *)sender
 {
-    [self setMode:3];
+    [self setMode:Subtraction];
 }
--(IBAction)btnDivision:(UIControl *)sender
+
+- (IBAction)multiplicationButton:(UIControl *)sender
 {
-    [self setMode:4];
+    [self setMode:Multiplication];
+}
+
+- (IBAction)divisionButton:(UIControl *)sender
+{
+    [self setMode:Division];
 }
 
 @end
