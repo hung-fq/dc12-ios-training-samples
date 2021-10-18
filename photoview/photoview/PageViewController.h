@@ -10,7 +10,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PageViewController : UIPageViewController <UIPageViewControllerDataSource>
-@property NSInteger indexImagePage;
 @end
 
 NS_ASSUME_NONNULL_END

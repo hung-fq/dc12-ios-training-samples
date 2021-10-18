@@ -10,14 +10,10 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *avataimage;
-@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
-
+@property (nonatomic, weak) id <PageDelegateDelegate> delegate;
 @property NSString *strImage;
 @property NSUInteger *pageIndex;
 @property NSUInteger indexImage;
-
-@property (nonatomic, weak) id <PageDelegateDelegate> delegate;
 
 @end
 
