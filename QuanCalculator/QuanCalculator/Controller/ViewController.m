@@ -40,6 +40,9 @@ static NSString * const zeroStringValue = @"0";
 static NSString * const emptyStringValue = @"";
 static NSString * const errorMessage = @"Can't devide for 0";
 
+static NSString * const labelBottonC = @"C";
+static NSString * const labelBottonAC = @"AC";
+
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad {
@@ -70,6 +73,10 @@ static NSString * const errorMessage = @"Can't devide for 0";
 #pragma mark - Method
 
 - (void)handleNumber:(NSInteger)number {
+    [self đeactiveAllFomularButton];
+    if([self.buttonCancel.titleLabel.text  isEqual: labelBottonAC]) {
+        [self.buttonCancel setTitle:labelBottonC forState:UIControlStateNormal];
+    }
     if(self.hasError) {
         _resultLabel.text = [self parseNumberToString:number];
     } else if([self.lastButtonString isEqual: numberButtonType]) {
@@ -119,16 +126,17 @@ static NSString * const errorMessage = @"Can't devide for 0";
             self.firstNumber = [self handleTotal];
             self.resultLabel.text = [self parseNumberToString:self.firstNumber];
         } else if([self.fomularString isEqual: divideFomular]
-                 && self.secondNumber == 0) {
-           _resultLabel.text = errorMessage;
+                  && self.secondNumber == 0) {
+            _resultLabel.text = errorMessage;
             self.hasError = YES;
-       }
+        }
         self.fomularString = fomular;
         self.lastButtonString = fomularButtonType;
     }
 }
 
 - (void)resetAll {
+    [self đeactiveAllFomularButton];
     self.firstNumber = 0;
     self.secondNumber = 0;
     self.total = 0;
@@ -137,14 +145,35 @@ static NSString * const errorMessage = @"Can't devide for 0";
     self.hasError = NO;
 }
 
+- (void)handleButtonActive:(UIButton *)extractedExpr {
+    [extractedExpr setBackgroundColor:[UIColor whiteColor]];
+    [extractedExpr setTintColor:[UIColor systemOrangeColor]];
+}
+
+- (void)handleButtonDeActive:(UIButton *)extractedExpr {
+    [extractedExpr setBackgroundColor:[UIColor systemOrangeColor]];
+    [extractedExpr setTintColor:[UIColor whiteColor]];
+}
+
+- (void)đeactiveAllFomularButton {
+    [self handleButtonDeActive:self.buttonPlus];
+    [self handleButtonDeActive:self.buttonMinus];
+    [self handleButtonDeActive:self.buttonDevide];
+    [self handleButtonDeActive:self.buttonMultiply];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)pressButtonCancel:(id)sender {
     _resultLabel.text = zeroStringValue;
     [self resetAll];
+    if([self.buttonCancel.titleLabel.text  isEqual: labelBottonC]) {
+        [self.buttonCancel setTitle:labelBottonAC forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)pressButtonEqual:(id)sender {
+    [self đeactiveAllFomularButton];
     if(self.hasError) {
         _resultLabel.text = errorMessage;
     } else {
@@ -202,18 +231,33 @@ static NSString * const errorMessage = @"Can't devide for 0";
 
 - (IBAction)pressButtonPlus:(id)sender {
     [self handleFomular:sumFomular];
-}
+    [self handleButtonActive:self.buttonPlus];
+    [self handleButtonDeActive:self.buttonMinus];
+    [self handleButtonDeActive:self.buttonDevide];
+    [self handleButtonDeActive:self.buttonMultiply];}
 
 - (IBAction)pressButtonMinus:(id)sender {
     [self handleFomular:minusFomular];
+    [self handleButtonActive:self.buttonMinus];
+    [self handleButtonDeActive:self.buttonPlus];
+    [self handleButtonDeActive:self.buttonDevide];
+    [self handleButtonDeActive:self.buttonMultiply];
 }
 
 - (IBAction)pressButtonMultiply:(id)sender {
     [self handleFomular:multiplyFomular];
+    [self handleButtonActive:self.buttonMultiply];
+    [self handleButtonDeActive:self.buttonMinus];
+    [self handleButtonDeActive:self.buttonDevide];
+    [self handleButtonDeActive:self.buttonPlus];
 }
 
 - (IBAction)pressButtonDevide:(id)sender {
     [self handleFomular:divideFomular];
+    [self handleButtonActive:self.buttonDevide];
+    [self handleButtonDeActive:self.buttonMinus];
+    [self handleButtonDeActive:self.buttonPlus];
+    [self handleButtonDeActive:self.buttonMultiply];
 }
 
 @end
