@@ -55,6 +55,7 @@ static double const setBorderButton = 2;
 #pragma mark - Method
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     [self setbackground];
 }
 
@@ -76,7 +77,7 @@ static double const setBorderButton = 2;
     _total = [_valueString doubleValue];
 }
 
-- (void)setHighlightButton :(UIButton*)buttonSelect {
+- (void)setHighlightButton:(UIButton*)buttonSelect {
     [self removeHighlightButton];
     [self.summationButton.layer setBorderColor:[[UIColor blackColor] CGColor]];
     [self.subtractionButton.layer setBorderColor:[[UIColor blackColor] CGColor]];
@@ -94,8 +95,7 @@ static double const setBorderButton = 2;
 
 #pragma mark - IBActions
 
-- (IBAction)Number:(UIControl *)sender
-{
+- (IBAction)Number:(UIControl *)sender {
     _labelText.text = [NSString stringWithFormat:@"%ld",(long) sender.tag];
     NSInteger mode = sender.tag;
     if (mode == ModeZero && _total == ModeZero) {
@@ -109,23 +109,21 @@ static double const setBorderButton = 2;
     _valueString = [_valueString stringByAppendingString:numAsString];
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *n = [formatter numberFromString:_valueString];
-    _labelText.text = [formatter stringFromNumber:n];
+    NSNumber *number = [formatter numberFromString:_valueString];
+    _labelText.text = [formatter stringFromNumber:number];
     if (_total == ModeZero) {
         _total = [_valueString doubleValue];
     }
 }
 
-- (IBAction)resetButton:(UIControl *)sender
-{
+- (IBAction)resetButton:(UIControl *)sender {
     _total = ModeZero;
     _valueString = emptyStringValue;
     _labelText.text = zeroStringValue;
     _calculator = ModeZero;
 }
 
-- (IBAction)valueButton:(UIControl *)sender
-{
+- (IBAction)valueButton:(UIControl *)sender {
     [self removeHighlightButton];
     if (_calculator == ModeZero) {
         return;
@@ -158,26 +156,22 @@ static double const setBorderButton = 2;
     _lastButtonWasMode = YES;
 }
 
-- (IBAction)sumButton:(UIControl *)sender
-{
+- (IBAction)sumButton:(UIControl *)sender {
     [self setMode:Summation];
     [self setHighlightButton:_summationButton];
 }
 
-- (IBAction)subtractionButton:(UIControl *)sender
-{
+- (IBAction)subtractionButton:(UIControl *)sender {
     [self setMode:Subtraction];
     [self setHighlightButton:_subtractionButton];
 }
 
-- (IBAction)multiplicationButton:(UIControl *)sender
-{
+- (IBAction)multiplicationButton:(UIControl *)sender {
     [self setMode:Multiplication];
     [self setHighlightButton:_multiplicationButton];
 }
 
-- (IBAction)divisionButton:(UIControl *)sender
-{
+- (IBAction)divisionButton:(UIControl *)sender {
     [self setMode:Division];
     [self setHighlightButton:_divisionButton];
 }
