@@ -25,7 +25,6 @@ static double maximumZoom = 3.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.avataimage.image = [UIImage imageNamed: _strImage];
     float minScale=_bgScrollView.frame.size.width / _avataimage.frame.size.width;
     _bgScrollView.minimumZoomScale = minScale;
@@ -36,8 +35,7 @@ static double maximumZoom = 3.0;
 
 #pragma mark - Method
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return _avataimage;
 }
 
@@ -45,7 +43,6 @@ static double maximumZoom = 3.0;
 
 - (IBAction)didTapButtonLeft:(id)sender {
     [self.delegate leftImage:self];
-    
 }
 
 - (IBAction)didTapButtonRight:(id)sender {
@@ -53,4 +50,3 @@ static double maximumZoom = 3.0;
 }
 
 @end
-

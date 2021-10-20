@@ -21,7 +21,7 @@
 #pragma mark - Define const
 
 static NSUInteger const zeroValue = 0;
-static NSInteger const zeroValueconst= 0;
+static NSInteger const zeroValueconst = 0;
 static NSString * const viewControllerIdentifier = @"ViewController";
 
 #pragma mark - Lifecycle
@@ -41,7 +41,7 @@ static NSString * const viewControllerIdentifier = @"ViewController";
     [self setViewControllers: viewController direction:UIPageViewControllerNavigationDirectionForward animated: NO completion:nil];
 }
 
-- (UIViewController *) viewControllerAtIndex: (NSUInteger)index{
+- (UIViewController *) viewControllerAtIndex: (NSUInteger)index {
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerIdentifier];
     viewController.delegate = self;
     viewController.strImage = _avatar[index];
@@ -50,7 +50,7 @@ static NSString * const viewControllerIdentifier = @"ViewController";
     return viewController;
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     NSUInteger index = (NSUInteger)((ViewController *) viewController).pageIndex;
     _indexImagePage = index;
     if(index == zeroValueconst || index == NSNotFound) {
@@ -60,7 +60,7 @@ static NSString * const viewControllerIdentifier = @"ViewController";
     return  [self viewControllerAtIndex:index];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     NSUInteger index = (NSUInteger)((ViewController *) viewController).pageIndex;
     _indexImagePage = index;
     if(index == NSNotFound) {
@@ -73,8 +73,7 @@ static NSString * const viewControllerIdentifier = @"ViewController";
     return  [self viewControllerAtIndex:index];
 }
 
-- (void) leftImage:() sender
-{
+- (void) leftImage:() sender {
     _indexImagePage--;
     if (_indexImagePage >= zeroValueconst) {
         [self viewImage: _indexImagePage];
@@ -83,8 +82,7 @@ static NSString * const viewControllerIdentifier = @"ViewController";
     }
 }
 
-- (void) rightImage:() sender
-{
+- (void) rightImage:() sender {
     _indexImagePage++;
     if (_indexImagePage <= _avatar.count-1) {
         [self viewImage: _indexImagePage];
