@@ -40,8 +40,8 @@ static NSString * const zeroStringValue = @"0";
 static NSString * const emptyStringValue = @"";
 static NSString * const errorMessage = @"Can't devide for 0";
 
-static NSString * const labelBottonC = @"C";
-static NSString * const labelBottonAC = @"AC";
+static NSString * const labelButtonC = @"C";
+static NSString * const labelButtonAC = @"AC";
 
 #pragma mark - Lifecycle
 
@@ -73,9 +73,19 @@ static NSString * const labelBottonAC = @"AC";
 #pragma mark - Method
 
 - (void)handleNumber:(NSInteger)number {
+    //Reset error to process new fomular
+    if(self.hasError) {
+        self.firstNumber = 0;
+        self.secondNumber = 0;
+        self.total = 0;
+        self.lastButtonString = emptyStringValue;
+        self.fomularString = emptyStringValue;
+        self.hasError = NO;
+    }
+    
     [self đeactiveAllFomularButton];
-    if([self.buttonCancel.titleLabel.text  isEqual: labelBottonAC]) {
-        [self.buttonCancel setTitle:labelBottonC forState:UIControlStateNormal];
+    if([self.buttonCancel.titleLabel.text isEqual: labelButtonAC]) {
+        [self.buttonCancel setTitle:labelButtonC forState:UIControlStateNormal];
     }
     if(self.hasError) {
         _resultLabel.text = [self parseNumberToString:number];
@@ -117,22 +127,23 @@ static NSString * const labelBottonAC = @"AC";
 - (void)handleFomular:(NSString *)fomular {
     if(self.hasError) {
         _resultLabel.text = errorMessage;
-    } else {
-        if(self.lastButtonString == equalButtonType) {
-            self.firstNumber = self.total;
-            self.secondNumber = 0;
-            self.total = 0;
-        } else if (self.secondNumber > 0) {
-            self.firstNumber = [self handleTotal];
-            self.resultLabel.text = [self parseNumberToString:self.firstNumber];
-        } else if([self.fomularString isEqual: divideFomular]
-                  && self.secondNumber == 0) {
-            _resultLabel.text = errorMessage;
-            self.hasError = YES;
-        }
-        self.fomularString = fomular;
-        self.lastButtonString = fomularButtonType;
+        return;
     }
+    if(self.lastButtonString == equalButtonType) {
+        self.firstNumber = self.total;
+        self.secondNumber = 0;
+        self.total = 0;
+    } else if (self.secondNumber > 0) {
+        self.firstNumber = [self handleTotal];
+        self.resultLabel.text = [self parseNumberToString:self.firstNumber];
+    } else if([self.fomularString isEqual: divideFomular]
+              && self.secondNumber == 0) {
+        _resultLabel.text = errorMessage;
+        self.hasError = YES;
+    }
+    self.fomularString = fomular;
+    self.lastButtonString = fomularButtonType;
+    
 }
 
 - (void)resetAll {
@@ -145,14 +156,14 @@ static NSString * const labelBottonAC = @"AC";
     self.hasError = NO;
 }
 
-- (void)handleButtonActive:(UIButton *)extractedExpr {
-    [extractedExpr setBackgroundColor:[UIColor whiteColor]];
-    [extractedExpr setTintColor:[UIColor systemOrangeColor]];
+- (void)handleButtonActive:(UIButton *)buttonOutletName {
+    [buttonOutletName setBackgroundColor:[UIColor whiteColor]];
+    [buttonOutletName setTintColor:[UIColor systemOrangeColor]];
 }
 
-- (void)handleButtonDeActive:(UIButton *)extractedExpr {
-    [extractedExpr setBackgroundColor:[UIColor systemOrangeColor]];
-    [extractedExpr setTintColor:[UIColor whiteColor]];
+- (void)handleButtonDeActive:(UIButton *)buttonOutletName {
+    [buttonOutletName setBackgroundColor:[UIColor systemOrangeColor]];
+    [buttonOutletName setTintColor:[UIColor whiteColor]];
 }
 
 - (void)đeactiveAllFomularButton {
@@ -167,8 +178,8 @@ static NSString * const labelBottonAC = @"AC";
 - (IBAction)pressButtonCancel:(id)sender {
     _resultLabel.text = zeroStringValue;
     [self resetAll];
-    if([self.buttonCancel.titleLabel.text  isEqual: labelBottonC]) {
-        [self.buttonCancel setTitle:labelBottonAC forState:UIControlStateNormal];
+    if([self.buttonCancel.titleLabel.text isEqual: labelButtonC]) {
+        [self.buttonCancel setTitle:labelButtonAC forState:UIControlStateNormal];
     }
 }
 
