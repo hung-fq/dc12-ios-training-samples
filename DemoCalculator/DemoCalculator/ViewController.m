@@ -126,6 +126,7 @@ static double const setBorderButton = 2;
 
 - (IBAction)valueButton:(UIControl *)sender
 {
+    [self removeHighlightButton];
     if (_calculator == ModeZero) {
         return;
     }
@@ -155,7 +156,6 @@ static double const setBorderButton = 2;
     _valueString = floatString;
     _labelText.text = floatString;
     _lastButtonWasMode = YES;
-    [self removeHighlightButton];
 }
 
 - (IBAction)sumButton:(UIControl *)sender
