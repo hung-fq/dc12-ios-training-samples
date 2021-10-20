@@ -234,7 +234,8 @@ static NSString * const labelBottonAC = @"AC";
     [self handleButtonActive:self.buttonPlus];
     [self handleButtonDeActive:self.buttonMinus];
     [self handleButtonDeActive:self.buttonDevide];
-    [self handleButtonDeActive:self.buttonMultiply];}
+    [self handleButtonDeActive:self.buttonMultiply];
+}
 
 - (IBAction)pressButtonMinus:(id)sender {
     [self handleFomular:minusFomular];
