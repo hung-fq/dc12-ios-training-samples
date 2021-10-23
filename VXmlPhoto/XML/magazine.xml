@@ -1,0 +1,7 @@
+<xml>
+    <Magazines>
+        <magazine id="1" thumb="img1.png" title="Magazine 1" />
+        <magazine id="2" thumb="img2.png" title="Magazine 2" />
+        <magazine id="3" thumb="img3.png" title="Magazine 3" />
+    </Magazines>
+</xml>
