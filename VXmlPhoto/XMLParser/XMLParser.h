@@ -10,11 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XMLParser : NSObject {
-    Magazine *magazine;
-    NSMutableArray *arrMagazine;
-}
-
+@interface XMLParser : NSObject
 @property (nonatomic, retain) Magazine *magazine;
 @property (nonatomic, retain) NSMutableArray *arrMagazine;
 - (XMLParser *) initXMLParser;

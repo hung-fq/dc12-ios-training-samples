@@ -37,7 +37,7 @@
     }
     
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:xmlData];
-    XMLParser *xmlMargazineParser = [[XMLParser alloc] init];
+    XMLParser *xmlMargazineParser = [[XMLParser alloc] initXMLParser];
     [xmlParser setDelegate:xmlMargazineParser];
     BOOL result = [xmlParser parse];
 
@@ -96,7 +96,6 @@
     }
     [photoScrollView setContentSize:CGSizeMake((numImages * scrollWidth), photoScrollView.bounds.size.height)];
 }
-
 
 - (IBAction)tapNext:(id)sender {
     if([photoScrollView contentOffset].x == scrollWidth*(numImages - 1)){

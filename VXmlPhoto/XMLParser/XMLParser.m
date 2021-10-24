@@ -47,8 +47,5 @@
     }
 }
 
-- (NSMutableArray *)getMagazines {
-    return arrMagazine;
-}
 
 @end
