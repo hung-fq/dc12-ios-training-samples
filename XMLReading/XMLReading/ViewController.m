@@ -29,10 +29,10 @@
 }
 
 - (IBAction)btnNextPress:(id)sender {
-    //TODO - implement for Next button
+    [self.goNextDelegate clickNextRegconize];
 }
 
 - (IBAction)btnPreviousPress:(id)sender {
-    //TODO - implement for Previous button
+    [self.goPreviousDelegate clickPreviousRegconize];
 }
 @end

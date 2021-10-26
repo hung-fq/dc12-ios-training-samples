@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		846F37112726A89800DF0091 /* MyXmlParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F37102726A89800DF0091 /* MyXmlParserDelegate.m */; };
 		84AF132C2717E250003B0022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF132B2717E250003B0022 /* AppDelegate.m */; };
 		84AF132F2717E250003B0022 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF132E2717E250003B0022 /* SceneDelegate.m */; };
 		84AF13322717E250003B0022 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF13312717E250003B0022 /* ViewController.m */; };
@@ -18,7 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		84AF13272717E250003B0022 /* TPhotoView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TPhotoView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		846F370F2726A89800DF0091 /* MyXmlParserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyXmlParserDelegate.h; sourceTree = "<group>"; };
+		846F37102726A89800DF0091 /* MyXmlParserDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyXmlParserDelegate.m; sourceTree = "<group>"; };
+		84AF13272717E250003B0022 /* XMLReading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMLReading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AF132A2717E250003B0022 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84AF132B2717E250003B0022 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84AF132D2717E250003B0022 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -48,7 +51,7 @@
 		84AF131E2717E250003B0022 = {
 			isa = PBXGroup;
 			children = (
-				84AF13292717E250003B0022 /* TPhotoView */,
+				84AF13292717E250003B0022 /* XMLReading */,
 				84AF13282717E250003B0022 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,12 +59,12 @@
 		84AF13282717E250003B0022 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84AF13272717E250003B0022 /* TPhotoView.app */,
+				84AF13272717E250003B0022 /* XMLReading.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		84AF13292717E250003B0022 /* TPhotoView */ = {
+		84AF13292717E250003B0022 /* XMLReading */ = {
 			isa = PBXGroup;
 			children = (
 				84AF132A2717E250003B0022 /* AppDelegate.h */,
@@ -77,16 +80,18 @@
 				84AF13382717E255003B0022 /* LaunchScreen.storyboard */,
 				84AF133B2717E255003B0022 /* Info.plist */,
 				84AF133C2717E255003B0022 /* main.m */,
+				846F370F2726A89800DF0091 /* MyXmlParserDelegate.h */,
+				846F37102726A89800DF0091 /* MyXmlParserDelegate.m */,
 			);
-			path = TPhotoView;
+			path = XMLReading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84AF13262717E250003B0022 /* TPhotoView */ = {
+		84AF13262717E250003B0022 /* XMLReading */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84AF13402717E255003B0022 /* Build configuration list for PBXNativeTarget "TPhotoView" */;
+			buildConfigurationList = 84AF13402717E255003B0022 /* Build configuration list for PBXNativeTarget "XMLReading" */;
 			buildPhases = (
 				84AF13232717E250003B0022 /* Sources */,
 				84AF13242717E250003B0022 /* Frameworks */,
@@ -96,9 +101,9 @@
 			);
 			dependencies = (
 			);
-			name = TPhotoView;
+			name = XMLReading;
 			productName = TPhotoView;
-			productReference = 84AF13272717E250003B0022 /* TPhotoView.app */;
+			productReference = 84AF13272717E250003B0022 /* XMLReading.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -114,7 +119,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 84AF13222717E250003B0022 /* Build configuration list for PBXProject "TPhotoView" */;
+			buildConfigurationList = 84AF13222717E250003B0022 /* Build configuration list for PBXProject "XMLReading" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,7 +132,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				84AF13262717E250003B0022 /* TPhotoView */,
+				84AF13262717E250003B0022 /* XMLReading */,
 			);
 		};
 /* End PBXProject section */
@@ -151,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84AF13322717E250003B0022 /* ViewController.m in Sources */,
+				846F37112726A89800DF0091 /* MyXmlParserDelegate.m in Sources */,
 				84AF132C2717E250003B0022 /* AppDelegate.m in Sources */,
 				84AF133D2717E255003B0022 /* main.m in Sources */,
 				84AF134627181338003B0022 /* PageViewController.m in Sources */,
@@ -298,12 +304,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TPhotoView/Info.plist;
+				INFOPLIST_FILE = XMLReading/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tma.vn.TPhotoView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tma.vn.XMLReading;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -315,12 +321,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TPhotoView/Info.plist;
+				INFOPLIST_FILE = XMLReading/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tma.vn.TPhotoView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tma.vn.XMLReading;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -329,7 +335,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84AF13222717E250003B0022 /* Build configuration list for PBXProject "TPhotoView" */ = {
+		84AF13222717E250003B0022 /* Build configuration list for PBXProject "XMLReading" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84AF133E2717E255003B0022 /* Debug */,
@@ -338,7 +344,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84AF13402717E255003B0022 /* Build configuration list for PBXNativeTarget "TPhotoView" */ = {
+		84AF13402717E255003B0022 /* Build configuration list for PBXNativeTarget "XMLReading" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84AF13412717E255003B0022 /* Debug */,
