@@ -24,9 +24,9 @@ static NSString *const So9 = @"9";
 static NSString *const ChiaCho0 = @"Khong the chia cho 0";
 
 @interface ViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *txtKetqua;
+@property (weak, nonatomic) IBOutlet UILabel *lblKetqua;
 @property (weak, nonatomic) IBOutlet UIView *viewNumber;
-
+- (IBAction)key0:(id)sender;
 - (IBAction)key1:(id)sender;
 - (IBAction)key2:(id)sender;
 - (IBAction)key3:(id)sender;
@@ -45,7 +45,7 @@ static NSString *const ChiaCho0 = @"Khong the chia cho 0";
 @end
 
 @implementation ViewController
-@synthesize txtKetqua,viewNumber;
+@synthesize lblKetqua,viewNumber;
 int sothunhat;
 int sothuhai;
 double ketqua;
@@ -55,162 +55,161 @@ NSString *dau;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    txtKetqua.text = @"";
+    lblKetqua.text = @"";
     sothunhat = 0;
     sothuhai = 0;
     ketqua = 0.0;
     dau = @"";
     isDaTinhToan = false;
-    txtKetqua.text = So0;
-    [self.view setBackgroundColor:[UIColor yellowColor]];
-    [viewNumber setBackgroundColor:[UIColor yellowColor]];
+    lblKetqua.text = So0;
+    [viewNumber setBackgroundColor:[UIColor lightGrayColor]];
 }
 
 - (IBAction)key0:(id)sender {
-    NSString *kq = txtKetqua.text;
-    if([txtKetqua.text isEqualToString:So0]) {
+    NSString *kq = lblKetqua.text;
+    if([lblKetqua.text isEqualToString:So0]) {
         return;
     }
     if(isDaTinhToan) {
-        txtKetqua.text = So0;
+        lblKetqua.text = So0;
         isDaTinhToan = false;
     } else {
         kq = [kq stringByAppendingString:So0];
-        txtKetqua.text = kq;
+        lblKetqua.text = kq;
     }
 }
 
 - (IBAction)key1:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So1;
+        lblKetqua.text = So1;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So1;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So1;
         } else {
             kq = [kq stringByAppendingString:So1];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
 
 - (IBAction)key2:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So2;
+        lblKetqua.text = So2;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So2;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So2;
         } else {
             kq = [kq stringByAppendingString:So2];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
 
 - (IBAction)key3:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So3;
+        lblKetqua.text = So3;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So3;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So3;
         } else {
             kq = [kq stringByAppendingString:So3];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
 
 - (IBAction)key4:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So4;
+        lblKetqua.text = So4;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So4;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So4;
         } else {
             kq = [kq stringByAppendingString:So4];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
 
 - (IBAction)key5:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So5;
+        lblKetqua.text = So5;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So5;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So5;
         } else {
             kq = [kq stringByAppendingString:So5];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
 
 - (IBAction)key6:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So6;
+        lblKetqua.text = So6;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So6;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So6;
         } else {
             kq = [kq stringByAppendingString:So6];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
 
 - (IBAction)key7:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So7;
+        lblKetqua.text = So7;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So7;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So7;
         } else {
             kq = [kq stringByAppendingString:So7];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
 
 - (IBAction)key8:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So8;
+        lblKetqua.text = So8;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So8;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So8;
         } else {
             kq = [kq stringByAppendingString:So8];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
 
 - (IBAction)key9:(id)sender {
-    NSString *kq = txtKetqua.text;
+    NSString *kq = lblKetqua.text;
     if(isDaTinhToan) {
-        txtKetqua.text = So9;
+        lblKetqua.text = So9;
         isDaTinhToan = false;
     } else {
-        if([txtKetqua.text isEqualToString:So0]) {
-            txtKetqua.text = So9;
+        if([lblKetqua.text isEqualToString:So0]) {
+            lblKetqua.text = So9;
         } else {
             kq = [kq stringByAppendingString:So9];
-            txtKetqua.text = kq;
+            lblKetqua.text = kq;
         }
     }
 }
@@ -235,37 +234,37 @@ NSString *dau;
     dau = Nhan;
 }
 
-- (void)laySoThuNhat {
-    NSString *s1 = txtKetqua.text;
-    sothunhat = [s1 intValue];
-    txtKetqua.text = @"";
-}
-
 - (IBAction)keyXoa:(id)sender {
     sothunhat = 0;
     sothuhai = 0;
-    txtKetqua.text = @"0";
+    lblKetqua.text = @"0";
+}
+
+- (void)laySoThuNhat {
+    NSString *s1 = lblKetqua.text;
+    sothunhat = [s1 intValue];
+    lblKetqua.text = @"";
 }
 
 - (IBAction)keyKetqua:(id)sender {
-    NSString *s2 = txtKetqua.text;
+    NSString *s2 = lblKetqua.text;
     sothuhai = [s2 intValue];
     
     if ([dau isEqualToString:Cong]) {
         ketqua = sothunhat + sothuhai;
-        txtKetqua.text = [NSString stringWithFormat:@"%i", (int)ketqua];
+        lblKetqua.text = [NSString stringWithFormat:@"%i", (int)ketqua];
     } else if ([dau isEqualToString:Tru]) {
         ketqua = sothunhat - sothuhai;
-        txtKetqua.text = [NSString stringWithFormat:@"%i", (int)ketqua];
+        lblKetqua.text = [NSString stringWithFormat:@"%i", (int)ketqua];
     } else if ([dau isEqualToString:Nhan]) {
         ketqua = sothunhat * sothuhai;
-        txtKetqua.text = [NSString stringWithFormat:@"%i", (int)ketqua];
+        lblKetqua.text = [NSString stringWithFormat:@"%i", (int)ketqua];
     } else {
         if (sothuhai == 0) {
-            txtKetqua.text = [NSString stringWithFormat:ChiaCho0];
+            lblKetqua.text = [NSString stringWithFormat:ChiaCho0];
         } else {
             ketqua = (double)sothunhat / (double)sothuhai;
-            txtKetqua.text = [NSString stringWithFormat:@"%f", ketqua];
+            lblKetqua.text = [NSString stringWithFormat:@"%f", ketqua];
         }
     }
     
@@ -276,16 +275,13 @@ NSString *dau;
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    if (size.width > size.height) {
-        [self setBackgroundColor:[UIColor greenColor]];
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft ||
+        [[UIDevice currentDevice] orientation ] == UIDeviceOrientationLandscapeRight) {
+        viewNumber.backgroundColor = [UIColor darkGrayColor];
     } else {
-        [self setBackgroundColor:[UIColor yellowColor]];
+        viewNumber.backgroundColor = [UIColor lightGrayColor];
     }
 }
 
-- (void)setBackgroundColor:(UIColor *)color {
-    [self.view setBackgroundColor:color];
-    [viewNumber setBackgroundColor:color];
-}
 
 @end
